@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import SearchForm from "../components/SearchForm"
 import GifList from "../components/GifList"
-import { getInitialGifs, getGifsBySearchQuery } from "../api"
+import { setGifsByQuery, setInitialGifs } from "../utils/actions"
 
 function Root() {
   const [params] = useSearchParams()
@@ -12,24 +12,12 @@ function Root() {
   })
 
   useEffect(() => {
-    if (params.get("q")) return
-
-    const getGifs = async () => {
-      const { data, pagination } = await getInitialGifs()
-      setGifs({ data, pagination })
+    const query = params.get("q")
+    if (query) {
+      setGifsByQuery(query, setGifs).catch((err) => console.error(err))
+    } else {
+      setInitialGifs(setGifs).catch((err) => console.error(err))
     }
-
-    getGifs().catch((err) => console.error(err))
-  }, [params])
-
-  useEffect(() => {
-    const setGifsByQuery = async () => {
-      const query = params.get("q")
-      const { data, pagination } = await getGifsBySearchQuery(query)
-      setGifs({ data, pagination })
-    }
-
-    setGifsByQuery().catch((err) => console.error(err))
   }, [params])
 
   return (
