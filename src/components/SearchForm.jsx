@@ -34,6 +34,7 @@ const SearchForm = ({ setGifs }) => {
           disabled={disableSubmit}
           value="submit"
           className="btn-primary"
+          data-testid="search-button"
         >
           Search!
         </button>
