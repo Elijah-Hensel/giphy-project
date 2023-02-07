@@ -1,12 +1,29 @@
-import SearchForm from "./components/SearchForm"
-import './App.css';
+import React from "react"
+import { createBrowserRouter, RouterProvider, useSearchParams } from "react-router-dom"
+import Root from "./pages/Root"
+import NotFound from "./pages/NotFound"
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: "",
+        element: null,
+      },
+    ],
+  },
+])
 
 function App() {
+
   return (
-    <div className="App">
-      <SearchForm />
+    <div className="body-bg min-h-screen pb-6 px-2 md:px-0;">
+      <RouterProvider router={router} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

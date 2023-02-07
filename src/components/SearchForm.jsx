@@ -1,17 +1,22 @@
 import { useState } from "react"
+import { getGifsBySearchQuery } from "../api"
 
-const SearchForm = () => {
+const SearchForm = ({ setGifs }) => {
   const [searchVal, setSearchVal] = useState("")
-  console.log(searchVal)
+  const disableSubmit = searchVal.length === 0
 
-  const handleSearchInputChange = (e) => { 
+  const handleSearchInputChange = (e) => {
     setSearchVal(e.target.value)
   }
 
-  const handleSubmit = (e) => { 
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(searchVal)
+    const { data, pagination } = await getGifsBySearchQuery(searchVal)
+    setGifs({ data, pagination })
   }
+
+
+
 
   return (
     <div className="search-form-container">
@@ -24,7 +29,12 @@ const SearchForm = () => {
           onChange={handleSearchInputChange}
           placeholder="What kind of GIF would you like to see..?"
         />
-        <button type="submit" value="submit" className="btn-primary">
+        <button
+          type="submit"
+          disabled={disableSubmit}
+          value="submit"
+          className="btn-primary"
+        >
           Search!
         </button>
       </form>
