@@ -1,13 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+button {
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
+}
+
+button:hover:not([disabled]) {
+  cursor: pointer;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  background: #0de1c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.root {
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 50px;
+  background: #0de1c1;
+  box-shadow: 35px 35px 70px #0bbba0, -35px -35px 70px #0fffe2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-family: "Fredoka One";
+  color: #f2f2f2;
+  text-transform: uppercase;
+  position: relative;
+  font-size: 8em;
+}
+
+.search-form-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.search-form-container input {
+  width: 75%;
+  height: 32px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+
+.btn-primary {
+  width: 60px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.btn-primary:not([disabled]) {
+  background: #048785;
+  color: #f2f2f2;
+}
+
+.btn-primary:hover:not([disabled]) {
+  background: #f2f2f2;
+  color: #048785;
+}
+
+.gif-list-container {
+  max-height: 80%;
+}
+
+.gif-list {
+  flex-wrap: wrap;
+}
+
+.gif-list-item-container {
+  display: inline;
+  width: 30%;
+  margin: 0 2px;
+  position: relative;
+}
+
+.gif-list-item {
+  max-width: 100%;
+}
+
+.share-modal {
+  background: #f2f2f2;
+  position: absolute;
+  top: 3px;
+  left: 80%;
+  padding: 2px;
+  border-radius: 5px;
+  z-index: 1;
+  display: flex;
+}
+
+.share-modal input {
+  height: 32px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  z-index: 1;
+}
+
+.btn-share {
+  width: 60px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  background: #f2f2f2;
+  color: #048785;
+}
+
+.btn-share:hover {
+  width: 60px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  background: #048785;
+  color: #f2f2f2;
+}
+
+.page-controllers {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #f2f2f2;
+  font-weight: bold;
+}
+
+.page-controllers p {
+  width: 60px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-controllers p:hover {
+  cursor: pointer;
+}
+
+.show-copied-container {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30%;
+}
+
+.show-copied {
+  position: relative;
+  margin: 0 auto;
+}
+
+.copied-modal {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  background: #048785;
+  padding: 10px;
+  border-radius: 5px;
+  max-height: 500px;
+  border-bottom: 20px solid #048785;
+  overflow-y: scroll;
+}
+
+.gif-list-copied li .gif-list-item {
+  max-width: 80%;
+  margin-bottom: 10px;
 }

@@ -18,6 +18,7 @@ Empty.args = {
   gifData: {
     data: [],
     pagination: null,
+    currentGifs: [],
   },
 }
 
@@ -31,7 +32,7 @@ Empty.play = async ({ canvasElement }) => {
 export const DisplayGifs = Template.bind({})
 DisplayGifs.args = {
   gifData: {
-    data: [
+    currentGifs: [
       {
         images: {
           original_mp4: {

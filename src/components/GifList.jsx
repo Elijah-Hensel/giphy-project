@@ -1,11 +1,11 @@
 import PropTypes from "prop-types"
 import Gif from "./Gif"
 
-const GifList = ({ gifData }) => {
+const GifList = ({ gifData, ...rest }) => {
   console.log(gifData)
-  const { data } = gifData
+  const { currentGifs } = gifData
 
-  if (data.length < 1)
+  if (currentGifs.length < 1)
     return (
       <span id="no-gifs-to-display" className="gif-list-span">
         There are no GIF's do display...yet...
@@ -13,8 +13,13 @@ const GifList = ({ gifData }) => {
     )
 
   return (
-    <div>
-      <ul>{data.length > 0 && data.map((gif) => <Gif gif={gif} />)}</ul>
+    <div className="gif-list-container">
+      <ul className="gif-list center">
+        {currentGifs.length > 0 &&
+          currentGifs.map((gif) => (
+            <Gif key={gif.id} alt={gif.title} gif={gif} {...rest} />
+          ))}
+      </ul>
     </div>
   )
 }
@@ -27,6 +32,7 @@ GifList.defaultProps = {
   gifData: {
     data: [],
     pagination: null,
+    currentGifs: [],
   },
 }
 
