@@ -1,4 +1,5 @@
 import { useState } from "react"
+import PropTypes from 'prop-types'
 import { getGifsBySearchQuery } from "../api"
 
 const SearchForm = ({ setGifs }) => {
@@ -14,9 +15,6 @@ const SearchForm = ({ setGifs }) => {
     const { data, pagination } = await getGifsBySearchQuery(searchVal)
     setGifs({ data, pagination })
   }
-
-
-
 
   return (
     <div className="search-form-container">
@@ -34,7 +32,7 @@ const SearchForm = ({ setGifs }) => {
           disabled={disableSubmit}
           value="submit"
           className="btn-primary"
-          data-testid="search-button"
+          name="search-button"
         >
           Search!
         </button>
@@ -42,5 +40,10 @@ const SearchForm = ({ setGifs }) => {
     </div>
   )
 }
+
+SearchForm.propTypes = {
+  setGifs: PropTypes.func.isRequired,
+}
+
 
 export default SearchForm
