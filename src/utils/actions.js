@@ -1,4 +1,4 @@
-import { getInitialGifs, getGifsBySearchQuery } from "../api"
+import { getInitialGifs, getGifsBySearchQuery } from "../../api"
 
 export const setGifsByQuery = async (query, action) => {
         const { data, pagination } = await getGifsBySearchQuery(query)

@@ -14,9 +14,7 @@ const GifList = ({ gifData }) => {
 
   return (
     <div>
-      <ul>
-        {data.length > 0 && data.map((gif) => <Gif key={gif.id} gif={gif} />)}
-      </ul>
+      <ul>{data.length > 0 && data.map((gif) => <Gif gif={gif} />)}</ul>
     </div>
   )
 }

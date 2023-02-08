@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 const Gif = ({ gif }) => (
   <li key={gif.id}>
     <video className="video" muted autoPlay loop value={gif.title}>
@@ -7,9 +5,5 @@ const Gif = ({ gif }) => (
     </video>
   </li>
 )
-
-Gif.propTypes = {
-  gif: PropTypes.object.isRequired,
-}
 
 export default Gif
