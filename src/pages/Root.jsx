@@ -3,7 +3,6 @@ import { useSearchParams } from "react-router-dom"
 import SearchForm from "../components/SearchForm"
 import GifList from "../components/GifList"
 import { setGifsByQuery, setInitialGifs } from "../utils/actions"
-import { getInitialGifs, getGifsBySearchQuery } from "../api"
 
 function Root() {
   const [params] = useSearchParams()
@@ -23,7 +22,7 @@ function Root() {
 
   return (
     <div className="Root">
-      <SearchForm setGifs={setGifs} />
+      <SearchForm />
         <GifList data-testid="gif-list" gifData={gifs} />
     </div>
   )
