@@ -1,10 +1,10 @@
 import { useState } from "react"
-import PropTypes from 'prop-types'
-import { getGifsBySearchQuery } from "../api"
+import { useNavigate } from "react-router-dom"
 
-const SearchForm = ({ setGifs }) => {
+const SearchForm = () => {
   const [searchVal, setSearchVal] = useState("")
   const disableSubmit = searchVal.length === 0
+  const navigate = useNavigate()
 
   const handleSearchInputChange = (e) => {
     setSearchVal(e.target.value)
@@ -12,8 +12,7 @@ const SearchForm = ({ setGifs }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const { data, pagination } = await getGifsBySearchQuery(searchVal)
-    setGifs({ data, pagination })
+    navigate(`/?q=${searchVal}`)
   }
 
   return (
@@ -40,10 +39,5 @@ const SearchForm = ({ setGifs }) => {
     </div>
   )
 }
-
-SearchForm.propTypes = {
-  setGifs: PropTypes.func.isRequired,
-}
-
 
 export default SearchForm

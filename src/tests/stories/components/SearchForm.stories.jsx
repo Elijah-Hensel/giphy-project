@@ -1,24 +1,23 @@
-import React, { useState } from "react"
+import React from "react"
+import { BrowserRouter } from "react-router-dom"
 import { within, userEvent } from "@storybook/testing-library"
 import { expect } from "@storybook/jest"
 import SearchForm from "../../../components/SearchForm"
+
+const ROUTE = 'http://localhost:6006'
 
 export default {
   title: "Example/SearchForm",
   component: SearchForm,
 }
 
-const ContextWrapper = ({ args }) => {
-  const [gifs, setGifs] = useState({})
+const BrowserWrapper = ({ args }) => (
+  <BrowserRouter>
+    <SearchForm {...args} />
+  </BrowserRouter>
+)
 
-  return (
-    <div>
-      <SearchForm gifs={gifs} setGifs={setGifs} {...args} />
-    </div>
-  )
-}
-
-const Template = (args) => <ContextWrapper args={args} />
+const Template = (args) => <BrowserWrapper args={args} />
 
 export const Empty = Template.bind({})
 
@@ -38,7 +37,10 @@ OnChange.play = async ({ canvasElement }) => {
   const input = canvas.getByPlaceholderText(
     `What kind of GIF would you like to see..?`
   )
+  const searchButton = canvas.getByRole("button", { name: "Search!" })
   userEvent.type(input, "funny")
+  userEvent.click(searchButton)
 
   expect(input.value).toBe("funny")
+  expect(window.location.href).toBe(`${ROUTE}/?q=funny`)
 }
