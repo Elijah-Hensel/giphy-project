@@ -1,7 +1,7 @@
 import React from "react"
 import { within } from "@storybook/testing-library"
 import { expect } from "@storybook/jest"
-import GifList from "../../components/GifList"
+import GifList from "../../../components/GifList"
 
 export default {
   title: "Example/GifList",

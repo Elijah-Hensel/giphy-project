@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { within, userEvent } from "@storybook/testing-library"
 import { expect } from "@storybook/jest"
-import SearchForm from "../../components/SearchForm"
+import SearchForm from "../../../components/SearchForm"
 
 export default {
   title: "Example/SearchForm",
