@@ -1,14 +1,13 @@
 import PropTypes from "prop-types"
 import Gif from "./Gif"
+import NoGifs from "./NoGifs"
 
 const GifList = ({ gifData, ...rest }) => {
   const { currentGifs } = gifData
 
   if (currentGifs.length < 1)
     return (
-      <span id="no-gifs-to-display" className="gif-list-span">
-        There are no GIF's do display...yet...
-      </span>
+      <NoGifs />
     )
   
 

@@ -9,7 +9,7 @@ const ShareModal = ({ url, gif, setCopiedGifs, copiedGifs }) => {
     navigator.clipboard.writeText(url)
 
     if (!Object.values(copiedGifs.gifs).includes(gif))
-      // console.log(copiedGifs.gifs, url)
+
       setCopiedGifs({
         ...copiedGifs,
         gifs: [...copiedGifs.gifs, gif]

@@ -3,12 +3,8 @@ import { useSearchParams } from "react-router-dom"
 import SearchForm from "../components/SearchForm"
 import GifList from "../components/GifList"
 import CopiedGifs from "../components/CopiedGifs"
-import {
-  setGifsByQuery,
-  setInitialGifs,
-  incrementPage,
-  decrementPage,
-} from "../utils/actions"
+import PageControllers from "../components/PageControllers"
+import { setGifsByQuery, setInitialGifs } from "../utils/actions"
 
 function Root() {
   const [params] = useSearchParams()
@@ -46,41 +42,13 @@ function Root() {
         copiedGifs={copiedGifs}
         setCopiedGifs={setCopiedGifs}
       />
-      <div className="page-controllers">
-        {pageRef.page > 1 && (
-          <p
-            onClick={() => setPageRef(decrementPage(pageRef))}
-            className="prev-page"
-          >
-            {`<<`}
-          </p>
-        )}
-        {pageRef.page < 5 && gifs.data.length > 0 && (
-          <p
-            onClick={() => setPageRef(incrementPage(pageRef))}
-            className="next-page"
-          >
-            {`>>`}
-          </p>
-        )}
-      </div>
-      <div className="show-copied-container">
-        <button
-          className="btn-primary show-copied"
-          onClick={() =>
-            setCopiedGifs({
-              ...copiedGifs,
-              modalIsOpen: !copiedGifs.modalIsOpen,
-            })
-          }
-        >
-          History
-        </button>
-        <CopiedGifs
-          showCopied={copiedGifs.modalIsOpen}
-          gifs={copiedGifs.gifs}
-        />
-      </div>
+      <PageControllers pageRef={pageRef} setPageRef={setPageRef} gifs={gifs} />
+      <CopiedGifs
+        showCopied={copiedGifs.modalIsOpen}
+        gifs={copiedGifs.gifs}
+        copiedGifs={copiedGifs}
+        setCopiedGifs={setCopiedGifs}
+      />
     </div>
   )
 }
