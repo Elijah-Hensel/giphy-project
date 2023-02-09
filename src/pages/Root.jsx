@@ -14,7 +14,6 @@ function Root() {
   const [params] = useSearchParams()
   const [gifs, setGifs] = useState({
     data: [],
-    pagination: null,
     currentGifs: [],
   })
   const [pageRef, setPageRef] = useState({
@@ -56,7 +55,7 @@ function Root() {
             {`<<`}
           </p>
         )}
-        {pageRef.page < 6 && gifs.data.length > 0 && (
+        {pageRef.page < 5 && gifs.data.length > 0 && (
           <p
             onClick={() => setPageRef(incrementPage(pageRef))}
             className="next-page"

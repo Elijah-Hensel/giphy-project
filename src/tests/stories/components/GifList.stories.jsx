@@ -7,7 +7,7 @@ export default {
   title: "Example/GifList",
   component: GifList,
   argTypes: {
-    gifData: { data: [], pagination: null },
+    gifData: { data: [] },
   },
 }
 
@@ -17,7 +17,6 @@ export const Empty = Template.bind({})
 Empty.args = {
   gifData: {
     data: [],
-    pagination: null,
     currentGifs: [],
   },
 }
@@ -64,11 +63,6 @@ DisplayGifs.args = {
         },
       },
     ],
-    pagination: {
-      total_count: 4913,
-      count: 3,
-      offset: 0,
-    },
   },
 }
 
@@ -76,7 +70,6 @@ DisplayGifs.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
   const gifList = []
   const gifData = canvas.getAllByRole("listitem")
-  console.log(gifData)
   gifList.push(gifData)
 
   await expect(gifData.length).toEqual(3)

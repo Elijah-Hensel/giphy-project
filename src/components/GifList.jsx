@@ -2,7 +2,6 @@ import PropTypes from "prop-types"
 import Gif from "./Gif"
 
 const GifList = ({ gifData, ...rest }) => {
-  console.log(gifData)
   const { currentGifs } = gifData
 
   if (currentGifs.length < 1)
@@ -11,6 +10,7 @@ const GifList = ({ gifData, ...rest }) => {
         There are no GIF's do display...yet...
       </span>
     )
+  
 
   return (
     <div className="gif-list-container">
@@ -31,7 +31,6 @@ GifList.propTypes = {
 GifList.defaultProps = {
   gifData: {
     data: [],
-    pagination: null,
     currentGifs: [],
   },
 }

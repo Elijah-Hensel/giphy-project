@@ -39,7 +39,7 @@ button:hover:not([disabled]) {
 }
 
 .root {
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
   border-radius: 50px;
   background: #0de1c1;
@@ -48,6 +48,7 @@ button:hover:not([disabled]) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-basis: 45%;
 }
 
 .title {
@@ -92,6 +93,7 @@ button:hover:not([disabled]) {
 
 .gif-list-container {
   max-height: 80%;
+  width: 100%;
 }
 
 .gif-list {
@@ -99,10 +101,11 @@ button:hover:not([disabled]) {
 }
 
 .gif-list-item-container {
-  display: inline;
-  width: 30%;
-  margin: 0 2px;
+  display: flex;
+  flex-basis: 25%;
+  max-width: 14em;
   position: relative;
+  margin: 0 10px;
 }
 
 .gif-list-item {
@@ -112,8 +115,8 @@ button:hover:not([disabled]) {
 .share-modal {
   background: #f2f2f2;
   position: absolute;
-  top: 3px;
-  left: 80%;
+  top: 10px;
+  right: 10px;
   padding: 2px;
   border-radius: 5px;
   z-index: 1;
@@ -173,7 +176,8 @@ button:hover:not([disabled]) {
   position: absolute;
   top: 5px;
   left: 5px;
-  width: 30%;
+  max-width: 30%;
+  height: 500px;
 }
 
 .show-copied {

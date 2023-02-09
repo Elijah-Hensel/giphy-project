@@ -5,6 +5,8 @@ const Gif = ({ gif, ...rest }) => {
   const [showModal, setShowModal] = useState(false)
   const handleModal = () => setShowModal(!showModal)
 
+  if (!gif) return null
+
   return (
     <li
       key={gif.id}
@@ -12,7 +14,13 @@ const Gif = ({ gif, ...rest }) => {
       onMouseEnter={handleModal}
       onMouseLeave={handleModal}
     >
-      {showModal && <ShareModal url={gif.embed_url} gif={gif} {...rest} />}
+      {showModal && (
+        <ShareModal
+          url={gif.images.original_mp4.mp4}
+          gif={gif}
+          {...rest}
+        />
+      )}
       <video
         className="video gif-list-item"
         muted
