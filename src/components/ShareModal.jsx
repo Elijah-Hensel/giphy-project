@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const ShareModal = ({ url, gif, setCopiedGifs, copiedGifs }) => {
+const ShareModal = ({ url, gif, setCopiedGifs, copiedGifs, className }) => {
   const [buttonText, setButtonText] = useState("Copy")
   
   const copyUrl = () => {
@@ -17,8 +17,8 @@ const ShareModal = ({ url, gif, setCopiedGifs, copiedGifs }) => {
       setButtonText("Copied!")
     }
   return (
-    <div className="share-modal">
-      <button type="button" className="btn-share" onClick={() => copyUrl()}>{buttonText}</button>
+    <div className="share-modal" name="container">
+      <button type="button" className={className} onClick={() => copyUrl()}>{buttonText}</button>
     </div>
   )
 }

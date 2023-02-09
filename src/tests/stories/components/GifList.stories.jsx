@@ -23,7 +23,7 @@ Empty.args = {
 
 Empty.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
-  const noGifsSpan = canvas.getByText(`There are no GIF's do display...yet...`)
+  const noGifsSpan = canvas.getByText(`There are no GIF's to display...yet...`)
 
   expect(noGifsSpan).toBeDefined()
 }
@@ -68,9 +68,8 @@ DisplayGifs.args = {
 
 DisplayGifs.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
-  const gifList = []
   const gifData = canvas.getAllByRole("listitem")
-  gifList.push(gifData)
+
 
   await expect(gifData.length).toEqual(3)
 }

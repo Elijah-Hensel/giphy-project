@@ -108,6 +108,10 @@ button:hover:not([disabled]) {
   margin: 0 10px;
 }
 
+.gif-list-item-container __hover {
+  color: red;
+}
+
 .gif-list-item {
   max-width: 100%;
 }
@@ -175,7 +179,7 @@ button:hover:not([disabled]) {
 .show-copied-container {
   position: absolute;
   top: 5px;
-  left: 5px;
+  left: 10px;
   max-width: 30%;
   height: 500px;
 }
@@ -200,4 +204,8 @@ button:hover:not([disabled]) {
 .gif-list-copied li .gif-list-item {
   max-width: 80%;
   margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
 }

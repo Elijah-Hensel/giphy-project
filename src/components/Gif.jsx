@@ -1,11 +1,12 @@
 import { useState } from "react"
+import PropTypes from "prop-types"
 import ShareModal from "./ShareModal"
 
 const Gif = ({ gif, ...rest }) => {
   const [showModal, setShowModal] = useState(false)
   const handleModal = () => setShowModal(!showModal)
 
-  if (!gif) return null
+  // if (!gif) return null
 
   return (
     <li
@@ -14,13 +15,13 @@ const Gif = ({ gif, ...rest }) => {
       onMouseEnter={handleModal}
       onMouseLeave={handleModal}
     >
-      {showModal && (
-        <ShareModal
-          url={gif.images.original_mp4.mp4}
-          gif={gif}
-          {...rest}
-        />
-      )}
+      <ShareModal
+        url={gif.images.original_mp4.mp4}
+        gif={gif}
+        {...rest}
+        className={showModal ? "btn-share" : "hidden"}
+      />
+
       <video
         className="video gif-list-item"
         muted
@@ -32,6 +33,10 @@ const Gif = ({ gif, ...rest }) => {
       </video>
     </li>
   )
+}
+
+Gif.propTypes = {
+  gif: PropTypes.object.isRequired,
 }
 
 export default Gif
