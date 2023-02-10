@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Stuller Project",
+  "name": "Elijah Hensel's GIPHY API Project for Stuller",
   "icons": [
     {
       "src": "favicon.ico",
