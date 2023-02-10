@@ -1,4 +1,4 @@
-# Random Email Generator
+# GIPHY SEARCH
 
 ## Overview
 This is a small email generation application. There is a front end that accepts user input for sign up and a node script, that when run, will send emails with a random message from a list of predetermined message objects.
