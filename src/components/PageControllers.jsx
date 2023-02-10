@@ -2,7 +2,7 @@ import { incrementPage, decrementPage } from "../utils/actions"
 
 const PageControllers = ({ pageRef, setPageRef, gifs }) => {
   return (
-    <div className="page-controllers">
+    <div className="page-controllers" data-testid="controllers">
       {pageRef.page > 1 && (
         <p
           onClick={() => setPageRef(decrementPage(pageRef))}

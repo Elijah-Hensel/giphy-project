@@ -6,11 +6,6 @@ import Gif from "../../../components/Gif"
 export default {
   title: "Example/Gif",
   component: Gif,
-  parameters: {
-    actions: {
-      handles: ["mouseenter"],
-    },
-  },
 }
 
 const Template = (args) => <Gif {...args} />
@@ -39,13 +34,6 @@ GifData.play = async ({ canvasElement }) => {
 
 export const GifMouseOver = Template.bind({})
 
-GifMouseOver.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const button = await canvas.getByRole("button", { name: /copy/i })
-  // await expect(button).toHaveStyle("background: #f2f2f2;")
-  await expect(button.innerText).toBe("Copy")
-}
-
 GifMouseOver.args = {
   gif: {
     id: 1,
@@ -60,3 +48,9 @@ GifMouseOver.args = {
     },
   },
 }
+GifMouseOver.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const button = await canvas.getByRole("button", { name: /copy/i })
+  await expect(button.innerText).toBe("Copy")
+}
+

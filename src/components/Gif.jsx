@@ -6,7 +6,7 @@ const Gif = ({ gif, ...rest }) => {
   const [showModal, setShowModal] = useState(false)
   const handleModal = () => setShowModal(!showModal)
 
-  // if (!gif) return null
+  if (!gif.images) return null
 
   return (
     <li
@@ -18,8 +18,8 @@ const Gif = ({ gif, ...rest }) => {
       <ShareModal
         url={gif.images.original_mp4.mp4}
         gif={gif}
+        showModal={showModal}
         {...rest}
-        className={showModal ? "btn-share" : "hidden"}
       />
 
       <video

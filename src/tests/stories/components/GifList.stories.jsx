@@ -23,7 +23,7 @@ Empty.args = {
 
 Empty.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
-  const noGifsSpan = canvas.getByText(`There are no GIF's to display...yet...`)
+  const noGifsSpan = canvas.getByText(`There are no GIF's to display...yet... :(`)
 
   expect(noGifsSpan).toBeDefined()
 }

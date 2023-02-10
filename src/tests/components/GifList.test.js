@@ -1,6 +1,6 @@
 import React from "react"
 import { render } from "@testing-library/react"
-import GifList from "../GifList"
+import GifList from "../../components/GifList"
 
 describe("GifList component", () => {
   it("renders nothing when gifData is empty", () => {
