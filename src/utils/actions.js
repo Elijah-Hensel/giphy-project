@@ -2,8 +2,10 @@ import { getInitialGifs, getGifsBySearchQuery } from "../api"
 
 export const setGifsByQuery = async (query, action, pageRef) => {
   const { data, status } = await getGifsBySearchQuery(query)
+  
+  const responseLimitReached = () => status === 429
 
-  if (status === 429) {
+  if (responseLimitReached()) {
     return alert(`You've reached the maximum number of requests for this API!`)
   }
 
@@ -18,9 +20,10 @@ export const setInitialGifs = async (action) => {
   const data = await getInitialGifs()
   const formattedData = data.map((obj) => obj.data)
   const statusArr = data.map((obj) => obj.status)
-  const isThereABadStatus = statusArr.includes(429)
 
-  if (isThereABadStatus) {
+  const responseLimitReached = () => statusArr.includes(429)
+
+  if (responseLimitReached()) {
     return alert(`You've reached the maximum number of requests for this API!`)
   }
   
