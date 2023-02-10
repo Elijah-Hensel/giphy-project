@@ -3,6 +3,10 @@ import { getInitialGifs, getGifsBySearchQuery } from "../api"
 export const setGifsByQuery = async (query, action, pageRef) => {
   const { data, status } = await getGifsBySearchQuery(query)
 
+  if (status === 429) {
+    return alert(`You've reached the maximum number of requests for this API!`)
+  }
+
   return action({
     data,
     currentGifs: data.slice(pageRef.arrayStartPointer, pageRef.arrayEndPointer),
@@ -13,6 +17,12 @@ export const setGifsByQuery = async (query, action, pageRef) => {
 export const setInitialGifs = async (action) => {
   const data = await getInitialGifs()
   const formattedData = data.map((obj) => obj.data)
+  const statusArr = data.map((obj) => obj.status)
+  const isThereABadStatus = statusArr.includes(429)
+
+  if (isThereABadStatus) {
+    return alert(`You've reached the maximum number of requests for this API!`)
+  }
   
   return action({
     data: formattedData,
