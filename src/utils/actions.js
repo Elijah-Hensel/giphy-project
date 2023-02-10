@@ -11,7 +11,9 @@ export const setGifsByQuery = async (query, action, pageRef) => {
 
 export const setInitialGifs = async (action) => {
   const data = await getInitialGifs()
-  return action({ data, currentGifs: data, copiedGifs: [] })
+  if (data?.error) return action({ data: [], currentGifs: [], copiedGifs: [], error: data.error })
+  
+  return action({ data: [], currentGifs: data, copiedGifs: [] })
 }
 
 export const incrementPage = (state) => {
