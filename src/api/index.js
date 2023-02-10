@@ -1,11 +1,5 @@
 const KEY = process.env.REACT_APP_GIPHY_API_KEY
 
-const reqLimitMet = (response) => {
-  if (response.status === '429') return true
-
-  return false
-}
-
 export const getInitialGifs = async () => {
   try {
     const responses = await Promise.all([
@@ -14,15 +8,16 @@ export const getInitialGifs = async () => {
       fetch(`https://api.giphy.com/v1/gifs/random?api_key=${KEY}&limit=3`),
     ])
 
-    const data  = await Promise.all(
-      responses.map(function (response) {
-        if (reqLimitMet(response)) return { error: "Request Limit Met" }
-        
-        const data = response.json()
-       return data
+    const data = await Promise.all(
+      responses.map(async function (response) {
+
+        // send status with every response
+        const { status } = response
+        const {data} = await response.json()
+        return {data, status}
       })
     )
-    return data.map((obj) => obj.data)
+    return data.map(({data, status}) => ({data, status}))
   } catch (error) {
     console.error(error)
   }
@@ -34,10 +29,10 @@ export const getGifsBySearchQuery = async (query) => {
       `https://api.giphy.com/v1/gifs/search?api_key=${KEY}&limit=20&q=${query}`
     )
 
-    if (reqLimitMet(response)) return { error: "Request Limit Met" }
-
-    const data = await response.json()
-    return data
+    // send status with every response
+    const { status } = response
+    const { data } = await response.json()
+    return { data, status }
   } catch (error) {
     console.error(error)
   }

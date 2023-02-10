@@ -1,19 +1,24 @@
 import { getInitialGifs, getGifsBySearchQuery } from "../api"
 
 export const setGifsByQuery = async (query, action, pageRef) => {
-  const { data } = await getGifsBySearchQuery(query)
+  const { data, status } = await getGifsBySearchQuery(query)
 
   return action({
     data,
     currentGifs: data.slice(pageRef.arrayStartPointer, pageRef.arrayEndPointer),
+    status,
   })
 }
 
 export const setInitialGifs = async (action) => {
   const data = await getInitialGifs()
-  if (data?.error) return action({ data: [], currentGifs: [], copiedGifs: [], error: data.error })
+  const formattedData = data.map((obj) => obj.data)
   
-  return action({ data: [], currentGifs: data, copiedGifs: [] })
+  return action({
+    data: formattedData,
+    currentGifs: formattedData,
+    copiedGifs: [],
+  })
 }
 
 export const incrementPage = (state) => {

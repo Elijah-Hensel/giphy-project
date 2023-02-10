@@ -1,5 +1,5 @@
 import React from "react"
-import { createBrowserRouter, RouterProvider, useSearchParams } from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Root from "./pages/Root"
 import NotFound from "./pages/NotFound"
 

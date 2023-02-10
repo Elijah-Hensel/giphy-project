@@ -22,6 +22,7 @@ function Root() {
     modalIsOpen: false,
   })
 
+
   useEffect(() => {
     const query = params.get("q")
     if (query) {
