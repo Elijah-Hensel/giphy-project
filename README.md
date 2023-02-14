@@ -6,7 +6,7 @@ This is a small email generation application. There is a front end that accepts 
 ## Software Versions Used
 | Tech          |  Version   | Notes                                   |
 | :------------ | ---------: | :-------------------------------------- |
-| Node.js       |   18.7.17  |
+| Node.js       |   16.19.0  |
 | React         |   ^18.2.0  | Ensure "@testing-library" & "@storybook" installations are compatible
 
 ## Application Setup for Local Development
